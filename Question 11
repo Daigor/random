@@ -1,0 +1,49 @@
+# Write a method that takes in a string. Your method should return the
+# most common letter in the array, and a count of how many times it
+# appears.
+#
+# Difficulty: medium.
+# return two things. most common letter and most common count
+# check each letter in array with two different loops. if loop[idx] == loop[idx2] then add a count
+# however if the next loop gets a greater count then that becomes whats stored in most common
+#
+
+def most_common_letter(string)
+  most_common_letter = nil
+  most_common_count = nil
+  idx = 0
+  #first loop, checks first letter from 0 to end
+  while idx < string.length
+    # 2nd loop, checks everything one index over for each letter. YOU MUST put count = 0 here so that it starts at zero before each of the loops inside. Also the letter in here is the letter that is being CHECKED. Last but not least, this one is not idx2 = idx + 1 because if your on the third index, the 0 index still needs to be checked
+    idx2 =  idx+ 1
+    count = 0
+    letter = string[idx]
+    while idx2 < string.length
+      # if letter a is == any letter after it then add a count
+      if string[idx] == string[idx2]
+        count += 1
+      end 
+    idx2 += 1
+    end
+    #first letter's loop finishes here, onto 2nd letter, but before that
+    #if most common count is nothing or if its less than count from loop above then the common count and common letter changes here
+    if most_common_count == nil || most_common_count < count
+      most_common_count = count
+      most_common_letter = letter
+    end
+    idx+= 1
+  end
+  return [most_common_letter, most_common_count]
+end
+
+# These are tests to check that your code is working. After writing
+# your solution, they should all print true.
+
+puts(
+  'most_common_letter("abca") == ["a", 2]: ' +
+  (most_common_letter('abca') == ['a', 2]).to_s
+)
+puts(
+  'most_common_letter("abbab") == ["b", 3]: ' +
+  (most_common_letter('abbab') == ['b', 3]).to_s
+)
