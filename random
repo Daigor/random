@@ -1,11 +1,54 @@
-function noisy(f) {
-  return function(arg) {
-    console.log("calling with", arg);
-    var val = f(arg);
-    console.log("called with", arg, "- got", val);
-    return val;
-  };
+var myArray = [1,2,3,4,5];
+var myObject = {
+    firstName: "Allan",
+    lastName: "Trinh",
+    location: "San Francisco"
 }
-noisy(Boolean)(0);
-// → calling with 0
-// → called with 0 - got false
+
+function each(element , callback){
+    if(Array.isArray(element)) {
+        for(var i = 0 ; i < element.length; i++){
+          callback(element[i])
+        }
+}  else {
+        for (var prop in element) {
+             callback(element[prop])
+        }
+    }
+}
+
+each(myArray, console.log)
+// logs each number
+//1
+//2
+//3
+//4
+//5
+
+
+function map(element, callback){
+    var newArray = [];
+    if(Array.isArray(element)){
+        for(var i = 0 ; i < element.length; i++){
+            
+            newArray.push(callback(element[i]))
+        }
+    } else {
+     for (var prop in element){
+         
+         newArray.push(callback(element[prop]))
+     }   
+    }
+    return newArray
+}
+
+map(myArray, function(element){return element*2})
+//[2,4,6,8,10]
+
+
+function filter(array, test){
+    
+}
+
+filter(myArray, function(element){return element%2})
+//[1,3,5]
