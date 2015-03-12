@@ -30,14 +30,12 @@ function map(element, callback){
     var newArray = [];
     if(Array.isArray(element)){
         for(var i = 0 ; i < element.length; i++){
-            
             newArray.push(callback(element[i]))
         }
-    } else {
-     for (var prop in element){
-         
-         newArray.push(callback(element[prop]))
-     }   
+} else {
+        for (var prop in element){
+          newArray.push(callback(element[prop]))
+        }   
     }
     return newArray
 }
