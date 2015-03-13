@@ -1,52 +1,9 @@
-var myArray = [1,2,3,4,5];
-var myObject = {
-    firstName: "Allan",
-    lastName: "Trinh",
-    location: "San Francisco"
+
+function sortBy(array, prop){
+    return array.sort(function(a,b){return a[prop] - b[prop]})
 }
 
-function each(element , callback){
-    if(Array.isArray(element)) {
-        for(var i = 0 ; i < element.length; i++){
-          callback(element[i])
-        }
-}  else {
-        for (var prop in element) {
-             callback(element[prop])
-        }
-    }
-}
+var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+sortBy(stooges, 'name');
 
-each(myArray, console.log)
-// logs each number
-//1
-//2
-//3
-//4
-//5
-
-
-function map(element, callback){
-    var newArray = [];
-    if(Array.isArray(element)){
-        for(var i = 0 ; i < element.length; i++){
-            newArray.push(callback(element[i]))
-        }
-} else {
-        for (var prop in element){
-          newArray.push(callback(element[prop]))
-        }   
-    }
-    return newArray
-}
-
-map(myArray, function(element){return element*2})
-//[2,4,6,8,10]
-
-
-function filter(array, test){
-    
-}
-
-filter(myArray, function(element){return element%2})
-//[1,3,5]
+//=> [{name: 'curly', age: 60}, {name: 'larry', age: 50}, {name: 'moe', age: 40}];
