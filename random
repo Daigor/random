@@ -61,3 +61,15 @@ function reduce(array, callback, accumulator){
 
 reduce([1, 2, 3], function(memo, num){ return memo + num;});
 //=> 6
+
+
+function reduceRight(list, callback){
+    var newArray = []
+    for(var i = list.length -1 ; i>=0; i--){
+         newArray = callback(newArray, list[i])   
+    }
+    return newArray
+}
+var list = [[0, 1], [2, 3], [4, 5]];
+reduceRight(list, function(a, b) { return a.concat(b); }, []);
+//=> [4, 5, 2, 3, 0, 1]
