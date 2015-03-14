@@ -1,9 +1,57 @@
-
-function sortBy(array, prop){
-    return array.sort(function(a,b){return a[prop] - b[prop]})
+var myArray = [1,2,3,4,5] 
+var myObject = {
+    firstName: "AT",
+    lastName: "Tran",
+    location: "San Francisco"
 }
+function each(collection, callback){
+    // if collection being passed is an array
+    if(Array.isArray(collection)){
+        for(var i = 0 ; i < collection.length; i ++){
+            callback(collection[i])   
+        }
+        //else its an object
+    } else { 
+        for(var prop in collection){
+            callback(collection[prop])   
+        }
+    }
+}
+each(myArray, console.log)
+// logs each number in array, also works for objects
 
-var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
-sortBy(stooges, 'name');
+function map(collection, callback){
+    var newArray = []
+    if(Array.isArray(collection)){
+        for( var i = 0 ; i < collection.length; i ++){
+            newArray.push(callback(collection[i]))
+        }
+    } else {
+        for(var prop in collection){
+            newArray.push(callback(collection[prop], prop))
+        }
+    }
+    return newArray
+}
+map([1, 2, 3], function(num){ return num * 3; });
+//=> [3, 6, 9]
+map({one: 1, two: 2, three: 3}, function(num, key){ return num * 3; });
+//=> [3, 6, 9]
 
-//=> [{name: 'curly', age: 60}, {name: 'larry', age: 50}, {name: 'moe', age: 40}];
+
+function reduce(array, callback, accumulator){
+    if(accumulator == null){
+        var sum = 0
+    } else {
+        var sum = accumulator
+    }
+    for(var i = 0 ; i < array.length; i ++){
+        sum = callback(sum, array[i])
+    }
+    return sum
+}
+//you can not include an accumulator
+reduce([1, 2, 3], function(memo, num){ return memo + num; },0);
+//=> 6
+
+
