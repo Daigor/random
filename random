@@ -39,19 +39,25 @@ map({one: 1, two: 2, three: 3}, function(num, key){ return num * 3; });
 //=> [3, 6, 9]
 
 
+
 function reduce(array, callback, accumulator){
+    // if the accumulator isnt provided, the sum is the first value in the array
+    // then also start the loop at iteration 1 and NOT 0!
     if(accumulator == null){
-        var sum = 0
-    } else {
-        var sum = accumulator
-    }
-    for(var i = 0 ; i < array.length; i ++){
+        var sum = array[0]
+        for(var i = 1 ; i < array.length; i ++){
         sum = callback(sum, array[i])
     }
     return sum
+    // if the accumulator is provided, then sum is equal to accumulator
+    } else {
+     var sum = accumulator
+     for(var i = 0 ; i < array.length; i ++){
+        sum = callback(sum, array[i])
+    }
+    return sum
+    }
 }
-//you can not include an accumulator
-reduce([1, 2, 3], function(memo, num){ return memo + num; },0);
+
+reduce([1, 2, 3], function(memo, num){ return memo + num;});
 //=> 6
-
-
