@@ -124,6 +124,7 @@ function where(list, object){
 where(listOfPlays, {author: "Shakespeare", year: 1611});
 //=> [{title: "Cymbeline", author: "Shakespeare", year: 1611},
 //   {title: "The Tempest", author: "Shakespeare", year: 1611}]
+
 function reject(array, callback){
     var newArray = []
     for (var i = 0 ; i < array.length; i++){
@@ -134,4 +135,57 @@ function reject(array, callback){
 }
 reject([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
 //=> [1, 3, 5]
+
+function every(list, test){
+    for(var i = 0;i < list.length; i++){
+        if(!(test(list[i]))){
+            return false
+        }   
+    }
+    return true
+}
+every([NaN, NaN, NaN], isNaN)
+// true
+
+function contains(array, number){
+    for(var i = 0 ; i < array.length; i ++){
+        if (array.indexOf(number) != -1){
+            return true
+        }
+    }
+    return false
+}
+
+function pluck(list, propertyName){
+    var newArray = []
+    for(var i = 0 ; i < list.length; i++){
+        var eachObject = list[i]
+        newArray.push(eachObject[propertyName])
+    }
+    return newArray 
+}
+
+var stooges = [{name: 'moe', age: 40}, 
+               {name: 'larry', age: 50}, 
+               {name: 'curly', age: 60}];
+pluck(stooges, 'name');
+//=> ["moe", "larry", "curly"]
+
+function max(list, callback){
+    var maxAge = null
+    var maxAgeObject = null
+    for(var i = 0 ; i < list.length; i++){
+        if(callback(list[i]) > maxAge){
+            maxAge = callback(list[i])
+            maxAgeObject = list[i]
+        }
+    }
+    return maxAgeObject
+}
+var stooges = [{name: 'moe', age: 40}, 
+               {name: 'larry', age: 50}, 
+               {name: 'curly', age: 60}];
+max(stooges, function(stooge){ return stooge.age; });
+//=> {name: 'curly', age: 60};
+
 
