@@ -202,9 +202,9 @@ min(numbers);
 
 function sortBy(list , callback) {
     if(typeof(callback)== "function"){
-        return list.sort(function(a,b){return callback(a)-            callback(b)});
+        return list.sort(function(a,b){return callback(a) - callback(b)});
     } else {
-        return list.sort(function(a,b){return a[callback] >           b[callback]});
+        return list.sort(function(a,b){return a[callback] > b[callback]});
     }
 }
 
