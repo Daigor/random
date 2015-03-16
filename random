@@ -324,3 +324,15 @@ function pairs(object){
 pairs({one: 1, two: 2, three: 3});
 //=> [["one", 1], ["two", 2], ["three", 3]]
 
+function mapObject(object, callback){
+    for (var prop in object){
+        object[prop] = callback(object[prop], prop)   
+    }
+    return object
+}
+mapObject({start: 5, end: 12}, function(val, key) {
+  return val + 5;
+});
+//=> {start: 10, end: 17}
+
+
