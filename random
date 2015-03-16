@@ -266,3 +266,23 @@ indexBy(stooges, 'age');
   //"50": {name: 'larry', age: 50},
   //"60": {name: 'curly', age: 60}
 //}
+
+
+function countBy(array, callback) {
+    var newObject = {}
+    var countTrue = 0 
+    var countFalse = 0
+    for(var i = 0 ; i < array.length; i++){
+        if(callback(array[i]) in newObject){
+            newObject[callback(array[i])] +=1;
+        } else {
+            newObject[callback(array[i])] = 1;
+        }
+    }
+    return newObject
+}
+// ? means if true --> value if true : value if false
+countBy([1, 2, 3, 4, 5], function(num) {
+  return num % 2 === 0 ? 'even': 'odd';
+});
+//=> {odd: 3, even: 2}
