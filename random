@@ -335,4 +335,14 @@ mapObject({start: 5, end: 12}, function(val, key) {
 });
 //=> {start: 10, end: 17}
 
+function invert(object){
+    var newObject = {}
+    for (var key in object){
+        value = object[key]
+        newObject[value] = key
+    }
+    return newObject
+}
+invert({Moe: "Moses", Larry: "Louis", Curly: "Jerome"});
+//=> {Moses: "Moe", Louis: "Larry", Jerome: "Curly"};
 
