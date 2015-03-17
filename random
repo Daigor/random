@@ -346,3 +346,12 @@ function invert(object){
 invert({Moe: "Moses", Larry: "Louis", Curly: "Jerome"});
 //=> {Moses: "Moe", Louis: "Larry", Jerome: "Curly"};
 
+
+function extend(destination, source){
+    for(var prop in source){
+     destination[prop] = source[prop]   
+    }
+    return destination
+}
+extend({name: 'moe'}, {age: 50});
+//=> {name: 'moe', age: 50}
