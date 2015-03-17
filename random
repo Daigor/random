@@ -382,3 +382,15 @@ omit({name: 'moe', age: 50, userid: 'moe1'}, function(value, key, object) {
   return isNumber(value);
 });
 //=> {name: 'moe', userid: 'moe1'}
+
+function defaults(object, defaultObject){
+    for(var prop in defaultObject){
+     if(!(prop in object)){
+         object[prop] = defaultObject[prop]
+         }   
+     }
+    return object
+}
+var iceCream = {flavor: "chocolate"};
+defaults(iceCream, {flavor: "vanilla", sprinkles: "lots"});
+//=> {flavor: "chocolate", sprinkles: "lots"}
