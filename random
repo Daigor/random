@@ -355,3 +355,30 @@ function extend(destination, source){
 }
 extend({name: 'moe'}, {age: 50});
 //=> {name: 'moe', age: 50}
+
+function isNumber(value){
+    return isNaN(value)
+}
+function omit(object, key){
+    var newObject = {}
+  if(typeof(key) === "string"){
+        for (var prop in object){
+            if(prop != key){
+                newObject[prop]=object[prop]
+            }   
+        }
+} else {
+    for(var property in object){
+            if(key(object[property], property, object)){
+                newObject[property] = object[property]
+            }      
+        }
+    }
+    return newObject
+}
+omit({name: 'moe',   age: 50, userid: 'moe1'}, 'userid');
+//=> {name: 'moe', age: 50}
+omit({name: 'moe', age: 50, userid: 'moe1'}, function(value, key, object) {
+  return isNumber(value);
+});
+//=> {name: 'moe', userid: 'moe1'}
