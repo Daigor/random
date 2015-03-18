@@ -1,0 +1,30 @@
+function each(collection, callback){
+    // if collection being passed is an array
+    if(Array.isArray(collection)){
+        for(var i = 0 ; i < collection.length; i ++){
+            callback(collection[i])   
+        }
+        //else its an object
+    } else { 
+        for(var prop in collection){
+            callback(collection[prop])   
+        }
+    }
+}
+
+function map(collection, callback){
+    var newArray = []
+    each(array, function(element){
+        newArray.push(callback(element))
+    })
+    return newArray
+}
+
+map([1, 2, 3], function(num){ return num * 3; });
+//=> [3, 6, 9]
+map({one: 1, two: 2, three: 3}, function(num, key){ return num * 3; });
+//=> [3, 6, 9]
+
+
+
+
