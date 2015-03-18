@@ -20,11 +20,32 @@ function map(collection, callback){
     return newArray
 }
 
+
 map([1, 2, 3], function(num){ return num * 3; });
 //=> [3, 6, 9]
 map({one: 1, two: 2, three: 3}, function(num, key){ return num * 3; });
 //=> [3, 6, 9]
 
+function filter(collection, test){
+    var newArray = []
+    each(collection, function(element){
+        if(test(element)){
+            newArray.push(element)
+        }
+    })
+    return newArray
+}
+filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 === 0; });
+//=> [2, 4, 6]
+
+function reduce(collection, callback,accumulator){
+    each(collection, function(element){
+        accumulator = callback(accumulator, element)
+    })
+    return accumulator
+}
+reduce([1, 2, 3], function(memo, num){ return memo + num; },0);
+//=> 6
 
 
 
