@@ -57,3 +57,33 @@ var list = [[0, 1], [2, 3], [4, 5]];
 reduceRight(list, function(a, b) { return a.concat(b); }, []);
 //=> [4, 5, 2, 3, 0, 1]
 
+function equals(object1, object2){
+    for(var prop in object1){
+        if (!(prop in object2)){
+                return false
+         }
+        if(object1[prop]!=object2[prop]){
+            return false
+        }
+        return true
+        }
+   }
+   
+function where(array, object){
+    var newArray = []
+    each(array, function(element){
+        if(equals(object, element)){
+            newArray.push(element)
+        }  
+    })
+    return newArray
+}
+
+var listOfPlays = [
+    {title: "Cymbeline", author:"Shakespeare", year:1611},
+    {title: "The Tempest", author:"Shakespeare", year:1611},
+    {title: "Blah", author:"lol", year: 1555}]
+
+where(listOfPlays, {author: "Shakespeare", year: 1611});
+//=> [{title: "Cymbeline", author: "Shakespeare", year: 1611},
+//    {title: "The Tempest", author: "Shakespeare", year: 1611}]
