@@ -47,5 +47,13 @@ function reduce(collection, callback,accumulator){
 reduce([1, 2, 3], function(memo, num){ return memo + num; },0);
 //=> 6
 
-
+function reduceRight(collection, callback, accumulator){
+    each(collection, function(element){
+        accumulator = callback(element, accumulator)
+    })
+    return accumulator
+}
+var list = [[0, 1], [2, 3], [4, 5]];
+reduceRight(list, function(a, b) { return a.concat(b); }, []);
+//=> [4, 5, 2, 3, 0, 1]
 
