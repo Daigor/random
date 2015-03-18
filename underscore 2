@@ -14,7 +14,7 @@ function each(collection, callback){
 
 function map(collection, callback){
     var newArray = []
-    each(array, function(element){
+    each(collection, function(element){
         newArray.push(callback(element))
     })
     return newArray
