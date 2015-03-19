@@ -65,8 +65,8 @@ function equals(object1, object2){
         if(object1[prop]!=object2[prop]){
             return false
         }
-        return true
         }
+        return true
    }
    
 function where(array, object){
