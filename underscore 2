@@ -130,3 +130,18 @@ function pluck(object, key){
 var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
 pluck(stooges, 'name');
 //=> ["moe", "larry", "curly"]
+
+function max(object, callback){
+    var maxAge = callback(object[0])
+    var maxObject = object[0]
+    each(object, function(element){
+        if(callback(element) > maxAge){
+            maxAge = callback(element)
+            maxObject = element
+        }
+    })
+    return maxObject
+}
+var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+max(stooges, function(stooge){ return stooge.age; });
+//=> {name: 'curly', age: 60};
