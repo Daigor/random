@@ -87,3 +87,22 @@ var listOfPlays = [
 where(listOfPlays, {author: "Shakespeare", year: 1611});
 //=> [{title: "Cymbeline", author: "Shakespeare", year: 1611},
 //    {title: "The Tempest", author: "Shakespeare", year: 1611}]
+
+//use equals function which determines if one object contains the same key/values as another.
+function findWhere(array, callback){
+    var newArray = []
+    each(array, function(element){
+        if(equals(callback, element)){
+           newArray.push(element)
+        }
+    })
+    return newArray[0]
+}
+
+var publicServicePulitzers = [{newsroom: "The New York Times"},
+                                {newsroom: "hi"},
+                                {hello:"The New York Times"},
+                                {heyo:"gay", newsroom: "The New York Times"}]
+find(publicServicePulitzers, {newsroom: "The New York Times"})
+
+// => if you take out the [0] it'll return both with newrooms. but findwhere only wants first
