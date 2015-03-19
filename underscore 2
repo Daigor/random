@@ -106,3 +106,16 @@ var publicServicePulitzers = [{newsroom: "The New York Times"},
 findWhere(publicServicePulitzers, {newsroom: "The New York Times"})
 
 // => if you take out the [0] it'll return both with newrooms. but findwhere only wants first
+
+function contains(array, value){
+    var trueOrFalse = false
+    each(array, function(element){
+        if(element == value){
+            trueOrFalse = true
+        }
+    })
+    return trueOrFalse
+}
+
+contains([1, 2, 3], 3)
+// true
