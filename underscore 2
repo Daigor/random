@@ -103,6 +103,6 @@ var publicServicePulitzers = [{newsroom: "The New York Times"},
                                 {newsroom: "hi"},
                                 {hello:"The New York Times"},
                                 {heyo:"gay", newsroom: "The New York Times"}]
-find(publicServicePulitzers, {newsroom: "The New York Times"})
+findWhere(publicServicePulitzers, {newsroom: "The New York Times"})
 
 // => if you take out the [0] it'll return both with newrooms. but findwhere only wants first
