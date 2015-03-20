@@ -193,3 +193,22 @@ countBy([1, 2, 3, 4, 5], function(num) {
   return num % 2 == 0 ? 'even': 'odd';
 });
 //=> {odd: 3, even: 2}
+
+function isOdd(number){
+    return number % 2 == 1
+}
+
+function partition(array, callback){
+    var arrayTrue =[]
+    var arrayFalse =[]
+    each(array, function(element){
+        if(callback(element)){
+            arrayTrue.push(element)
+        } else {
+            arrayFalse.push(element)
+        }
+    })
+    return [arrayTrue, arrayFalse]
+}
+partition([0, 1, 2, 3, 4, 5], isOdd);
+//=> [[1, 3, 5], [0, 2, 4]]
