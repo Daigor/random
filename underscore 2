@@ -176,3 +176,20 @@ function groupBy(array, callback){
 groupBy(['one', 'two', 'three'], 'length');
 //=> {3: ["one", "two"], 5: ["three"]
 
+function countBy(array, callback){
+    var countEven = 0
+    var countOdd = 0
+    each(array, function(element){
+        if(callback(element) == 'even'){
+            countEven+=1
+        } else {
+            countOdd+=1
+        }
+    })
+    return {odd: countOdd, even: countEven}
+}
+
+countBy([1, 2, 3, 4, 5], function(num) {
+  return num % 2 == 0 ? 'even': 'odd';
+});
+//=> {odd: 3, even: 2}
