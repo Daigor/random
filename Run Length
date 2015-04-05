@@ -1,0 +1,15 @@
+function RunLength(str) { 
+	var count = 1
+    var array = []
+    for(var i = 0 ; i < str.length; i++){
+    	if(str[i] == str[i+1]){
+        	count+=1
+        } else {
+        	array.push(count)
+            array.push(str[i])
+            count = 1
+        }
+    }
+	return array.join("")         
+}
+   
