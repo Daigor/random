@@ -1,0 +1,23 @@
+function PrimeTime(num) {
+		if(num == 2){
+			return true
+		};
+		for(var i = 2 ; i < num; i++){
+			if(num%i==0){
+			return false
+			}
+		};
+	return true
+}
+
+function PrimeMover(num) { 
+	var count = 0;
+  	for(var i = 2;;i++){
+  	if(PrimeTime(i)){
+    	count +=1
+    }
+   	if(count == num){
+    	return i 
+    }
+  }
+}
