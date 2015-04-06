@@ -1,0 +1,16 @@
+function PalindromeTwo(str) { 
+ var alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+ var array = []
+ for(var i = 0 ; i < str.length;i++){
+ 	if(alpha.indexOf(str[i]) != -1){
+    		array.push(str[i].toLowerCase()) 		                    
+      }
+  }
+  for(var j = 0 ; j < array.length; j++){
+    	if(array[j] != array[array.length-1-j]){
+        	return false
+        }
+    } 
+   return true
+}
+   
