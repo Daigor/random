@@ -1,0 +1,23 @@
+function LetterCount(str) { 
+	var words = str.split(" ")
+    var greatestWord = -1
+    var highestCount = 0
+	for(var i = 0 ; i < words.length;i++){
+      var word = words[i]
+    	for(var k = 0 ; k < word.length; k++){
+        	var letter = word[k]
+            var count = 0    
+            	for(var j = 0; j < word.length; j++){
+                	if (word[j] == letter){
+                      count +=1
+               	}
+            }
+          	if (count > highestCount && count > 1){
+            highestCount = count
+            greatestWord = word
+            }	
+        }	
+    }
+    return greatestWord
+}
+   
