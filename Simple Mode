@@ -1,0 +1,17 @@
+function SimpleMode(arr) { 
+	var highestNumber = -1
+    var highestCount = 0
+  	for(var i =0 ;i< arr.length;i++){
+      var count = 0
+      	for(var k = 0 ; k < arr.length; k++){
+    	if(arr[i] == arr[k]){
+        	count +=1
+        	}
+        } 
+      if(count > highestCount && count > 1){
+      	highestCount = count
+        highestNumber = arr[i]
+      }
+    }
+  return highestNumber
+}
