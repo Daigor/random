@@ -1,0 +1,28 @@
+function Arith(arr){
+	for(var i = 0; i < arr.length-1;i++){
+	if(arr[i+1]-arr[i] != arr[arr.length-1-i]-arr[arr.length-2-i]){
+    	return false
+    	}
+	} 
+  return true
+}
+
+function Geo(arr){
+	for(var i = 0; i < arr.length-1;i++){
+	if(arr[i+1]/arr[i] != arr[arr.length-1-i]/arr[arr.length-2-i]){
+    	return false
+    	}
+	} 
+  return true
+}
+
+function ArithGeoII(arr) { 
+	if(Arith(arr)){
+    	return "Arithmetic"
+    } else if (Geo(arr)){
+    	return "Geometric"
+    }	else {
+    	return -1
+    }
+}
+   
