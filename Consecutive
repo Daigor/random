@@ -1,0 +1,12 @@
+function Consecutive(arr) {
+  	var array = []
+	for(var i = 0 ; i < arr.length;i++){
+    	if(array.indexOf(arr[i]) == -1){
+        	array.push(arr[i])
+        }
+    }
+	array.sort(function(a,b){return a-b})	
+ 	var answer = array[array.length-1] - array[0] - array.length + 1 
+  	return answer
+}
+   
