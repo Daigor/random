@@ -1,0 +1,16 @@
+function ArithGeoII(arr) {
+    var geo = arr[1] / arr[0]
+    var arith = arr[1] - arr[0]
+    var arithmetic = "Arithmetic"
+    var geometric = "Geometric"
+    for(var i = 0; i < arr.length-1;i++){
+        if(arr[i+1]-arr[i] != arith && arithmetic == "Arithmetic"){
+            arithmetic = false
+        }
+        
+        if(arr[i+1]/arr[i] != geo && geometric == "Geometric"){
+            geometric = false
+        }
+    }
+    return geometric || arithmetic || -1
+}
