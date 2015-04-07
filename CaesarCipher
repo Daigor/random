@@ -1,0 +1,12 @@
+function CaesarCipher(str,num) { 
+	var alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+ 	var finalString = []
+    for(var i = 0 ; i < str.length;i++){
+    	if(alpha.indexOf(str[i]) == -1){
+           finalString.push(str[i])
+         } else {
+         finalString.push(alpha[alpha.indexOf(str[i])+num])
+         }
+    }
+	return finalString.join("")
+}
