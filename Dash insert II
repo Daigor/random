@@ -1,0 +1,14 @@
+function DashInsertII(num) {
+  	var numbas = "123456789"
+  	var number = num.toString().split("")
+	var finalArray = []
+    for (var i = 0; i < number.length; i++){
+    	finalArray.push(number[i])
+        if(number[i]%2==0 && number[i+1]%2==0 && number[i]!=0){
+        finalArray.push("*")
+        } else if (number[i]%2!=0 && number[i+1]%2!=0 && number[i]!=0) {
+        finalArray.push("-")	
+        }
+    }
+  return finalArray.join("")
+}
