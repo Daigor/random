@@ -1,0 +1,16 @@
+function NumberSearch(str) { 	
+  var number = "123456789"
+  var lower = "abcdefghijklmnopqrstuvwxyz"
+  var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  var sum = 0
+  var count = 0
+  for(var i = 0 ; i < str.length;i++){
+  	if(number.indexOf(str[i])!=-1){
+    	sum += parseInt(str[i])
+    } else if (lower.indexOf(str[i])!=-1 || upper.indexOf(str[i])!=-1){
+    	count +=1
+    }
+  }
+
+  return Math.round(sum/count)
+}
