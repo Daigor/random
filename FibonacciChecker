@@ -1,0 +1,16 @@
+function FibonacciChecker(num) { 
+	var a = 0 
+    var b = 1
+    var sum = null
+  	for(var i = 0 ;; i++){
+      if (sum == num){
+      	return "yes"
+      } else if (sum > num){
+      	return "no"
+      } else {
+    	sum = a+b
+        a = b
+        b = sum
+      }
+   }     
+}
