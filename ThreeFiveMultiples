@@ -1,0 +1,10 @@
+function ThreeFiveMultiples(num) {
+  	var array = []
+	for(var i = 0 ; i < num; i ++){
+    	if(i%3==0 || i%5 ==0){
+        	array.push(i)
+        }
+    }
+  var sum = array.reduce(function(a,b){return a+b})	
+  return sum
+}
