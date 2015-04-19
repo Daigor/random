@@ -1,0 +1,32 @@
+function SwapII(str) { 
+  var upper= "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  var lower= "abcdefghijklmnopqrstuvwxyz"
+  var number= "0123456789"
+  var string = []
+	//changes all the letters cases and pushes that and numbers to string
+  	for(var i = 0; i < str.length;i++){
+    	if(upper.indexOf(str[i])!=-1){
+        	string.push(str[i].toLowerCase())
+        } else if (lower.indexOf(str[i])!=-1){
+        	string.push(str[i].toUpperCase())
+        } else {
+        	string.push(str[i])
+        }
+    }
+  //finds the first number in the newly made string
+  var storeNumber = null
+  for(var j = 0; j < string.length; j++){
+  	if(number.indexOf(string[j])!= -1){
+    	for(var k = j+1 ; k < string.length; k++){
+     		if(string[k] == " "){
+            break;
+            } else if (number.indexOf(string[k])!= -1){
+            	storeNumber = string[j]
+                string[j] = string[k]
+                string[k] = storeNumber
+         } 	   
+      }
+    }
+  }
+  return string.join("")
+}
