@@ -1,0 +1,34 @@
+function BracketMatcher(str) { 
+	var countLeft = 0
+    var countRight = 0
+    for(var i = 0 ; i < str.length;i++){
+    	if(str[i]=="("){
+          countLeft+=1
+          var closeBracket = false
+          for(var k = i+1; k < str.length;k++){
+          	if(str[k] == ")"){
+            	closeBracket = true
+            }
+           }
+          if (closeBracket == false){
+           	return 0
+          }
+        } else if (str[i]==")"){
+          countRight+=1
+          var closeLeftBracket = false
+          for(var j = i - 1; j >=0;j--){
+          	if(str[j] == "("){
+            	closeLeftBracket = true
+            }
+          }
+          if(closeLeftBracket == false){
+          	return 0
+          }
+        }
+    }
+  if(countLeft==countRight){
+  	return 1
+  } else {
+  	return 0
+  }
+}
