@@ -1,0 +1,12 @@
+function NumberEncoding(str) { 
+	var alpha = "abcdefghijklmnopqrstuvwxyz";
+  	var array = [];
+    for(var i = 0 ; i < str.length;i++){
+    	if(alpha.indexOf(str[i])!=-1){
+           array.push(alpha.indexOf(str[i])+1)
+           } else {
+           array.push(str[i])
+           }
+    }
+ 	return array.join("")
+}
