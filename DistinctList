@@ -1,0 +1,17 @@
+function DistinctList(arr) {
+  	var finalCount = 0
+	for(var i = 0 ; i < arr.length;i++){
+      	var number = arr[i]
+        var count = 0
+    	for(var k = 0 ; k < arr.length;k++){
+        	if(number == arr[k]){
+            	count+=1
+            }
+        }
+      	if(count > finalCount && count !=1){
+        	finalCount = count
+        }
+    }
+     return finalCount    
+}
+   
