@@ -1,0 +1,19 @@
+function arrayAddition(array){
+    var sorted = array.sort(function(a,b){return a-b})
+    var max = sorted.pop()
+    function addition(total,arr){
+            if(total === 0){
+                return true
+            } else if(total != 0 && arr.length === 0){
+                return false
+        } else {      
+        var number = arr[0]
+        arr = arr.slice(1)
+        return addition(total-number, arr)|| addition(total, arr)
+        }
+    }
+    return addition(max, array)
+}
+
+arrayAddition([3,5,-1,8,1,1,1,1,1,12])
+
