@@ -1,0 +1,41 @@
+function permutations(inputArr){
+	var results = []
+    function permute(arr, memo){
+    var cur 
+    var memo = memo || []
+    for(var i = 0 ; i < arr.length;i++){
+      cur = arr.splice(i,1);
+   		if(arr.length === 0){
+    		results.push(memo.concat(cur))    	
+        }
+      	permute(arr, memo.concat(cur))
+        arr.splice(i,0,cur[0])
+   	 }
+    return results
+   }
+  return permute(inputArr)
+}
+
+function primeNumber(num){
+	if(num == 2){
+      return true
+  	} else {
+  		for(var i = 2 ; i < num;i++){
+    		if(num % i ==0 ){
+        	return false
+       		}
+    	}
+   }
+  return true
+}
+
+function PrimeChecker(num) { 
+	var number = num.toString().split("")
+    var permutationzz = permutations(number)
+    for(var i = 0 ; i < permutationzz.length;i++){
+    	if(primeNumber(parseInt(permutationzz[i].join("")))){
+        	return 1
+        }
+    }
+  return 0
+}
