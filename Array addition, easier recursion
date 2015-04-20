@@ -1,0 +1,22 @@
+function ArrayAddition(arr) { 
+
+  arr = arr.sort( function(a,b){return a - b});
+  
+  var max = arr.pop();
+  
+    function search(sum,i) {
+      if ( sum == max ) {
+        return true;
+      }
+      else if ( sum > max || i == arr.length ) {
+        return false;
+      }
+      else {
+        return search(sum + arr[i],i + 1) ||
+               search(sum,i + 1);
+      }
+    }
+    
+    // start search with sum of zero in position zero:
+    return search(0,0);
+}
