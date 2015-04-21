@@ -1,0 +1,78 @@
+//returns an array that does all the multiply/divide expressions
+function MultiplyDivide(array){
+    for(var k = 0 ; k < array.length;k++){
+     if(array[k] == "*" || array[k] == "/"){
+        if(array[k]== "*"){
+           array.splice(k-1, 3,parseInt(array[k-1]) * parseInt(array[k+1]))
+           return MultiplyDivide(array)
+        } else {
+            array.splice(k-1, 3,parseInt(array[k-1]) / parseInt(array[k+1]))
+           return MultiplyDivide(array)   
+       }
+     }
+    }
+    return array
+}
+// returns an array that splits numbers from expressions
+function Splitter(string){
+    var stuff = "()+*-/"
+    var str = []
+    var numbers = ""
+    for(var j = 0; j < string.length;j++){
+        if(j == string.length - 1){
+            numbers+= string[j]
+            str.push(numbers)
+        }
+        if(stuff.indexOf(string[j])==-1){
+            numbers+=string[j]
+        } else if(stuff.indexOf(string[j])!=-1 && numbers == ""){
+            str.push(string[j])
+        } else { 
+            str.push(numbers)
+            str.push(string[j])
+            numbers = ""
+        }
+    }
+    return str 
+}
+//returns an array that does all the addition/subtraction
+function AddSubtract(array){
+    for(var i = 0 ; i < array.length;i++){
+     if(array[i] == "+" || array[i] == "-"){
+        if(array[i]== "+"){
+           array.splice(i-1, 3,parseInt(array[i-1]) + parseInt(array[i+1]))
+           return AddSubtract(array)
+        } else {
+            array.splice(i-1, 3,parseInt(array[i-1]) - parseInt(array[i+1]))
+           return AddSubtract(array)   
+       }
+     }
+    }
+    return array   
+}
+// takes in an array and separates out
+function Parenthesis(array){
+        var result = []
+        var parent = null
+    for(var n = 0 ; n < array.length; n++){
+        if(array[n] == "("){
+            for(var o = n+1; o < array.length; o++){
+                if(array[o] == ")"){
+                  array.splice(n, o-n+1, 6)   
+                } 
+            }
+            
+        }
+    }
+    return array
+}
+// function that takes in a string expression and returns an answer based
+// Math order of operations
+function Math(string){
+    
+}
+
+
+var number = "5+(60/6+5/5)+5"
+var array = Splitter(number)
+console.log(array)
