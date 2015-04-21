@@ -19,10 +19,6 @@ function Splitter(string){
     var str = []
     var numbers = ""
     for(var j = 0; j < string.length;j++){
-        if(j == string.length - 1){
-            numbers+= string[j]
-            str.push(numbers)
-        }
         if(stuff.indexOf(string[j])==-1){
             numbers+=string[j]
         } else if(stuff.indexOf(string[j])!=-1 && numbers == ""){
@@ -71,10 +67,5 @@ function Parenthesis(array){
 // function that takes in a string expression and returns an answer based
 // Math order of operations
 function Math(string){
-    
+    return AddSubtract(MultiplyDivide(Parenthesis(Splitter(string))))
 }
-
-
-var number = "5+(60/6+5/5)+(5*5+2)"
-var array = Splitter(number)
-console.log(Parenthesis(array))
