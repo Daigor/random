@@ -50,7 +50,8 @@ function AddSubtract(array){
     }
     return array   
 }
-// takes in an array and separates out
+// takes in an array, splices out the parenthesis, does the order of operation and splices it back into
+// the array then returns the array
 function Parenthesis(array){
         var result = []
         var parent = null
@@ -58,7 +59,8 @@ function Parenthesis(array){
         if(array[n] == "("){
             for(var o = n+1; o < array.length; o++){
                 if(array[o] == ")"){
-                  array.splice(n, o-n+1, 6)   
+                  parent = array.splice(n, o-n+1)
+                  array.splice(n,0,AddSubtract(MultiplyDivide(parent))[1])
                 } 
             }
             
@@ -73,6 +75,6 @@ function Math(string){
 }
 
 
-var number = "5+(60/6+5/5)+5"
+var number = "5+(60/6+5/5)+(5*5+2)"
 var array = Splitter(number)
-console.log(array)
+console.log(Parenthesis(array))
