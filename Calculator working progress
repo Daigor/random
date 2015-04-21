@@ -19,6 +19,9 @@ function Splitter(string){
     var str = []
     var numbers = ""
     for(var j = 0; j < string.length;j++){
+        if(j == string.length-1 && stuff.indexOf(string[j])==-1){
+            str.push(string[j])
+        }
         if(stuff.indexOf(string[j])==-1){
             numbers+=string[j]
         } else if(stuff.indexOf(string[j])!=-1 && numbers == ""){
@@ -57,6 +60,7 @@ function Parenthesis(array){
                 if(array[o] == ")"){
                   parent = array.splice(n, o-n+1)
                   array.splice(n,0,AddSubtract(MultiplyDivide(parent))[1])
+                  return Parenthesis(array)
                 } 
             }
             
