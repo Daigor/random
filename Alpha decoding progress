@@ -1,0 +1,15 @@
+function stepOne(str){
+    var alpha = "abcdefghijklmnopqrstuvwxyz"
+    
+    function blah(string, i){
+        var currentAlphaIndex = alpha.indexOf(string[i])
+        var nextAlphaIndex = alpha.indexOf(string[i+1])
+        if(nextAlphaIndex-currentAlphaIndex != 1){
+            return alpha[alpha.indexOf(string[0])-1]+alpha[currentAlphaIndex+1]    
+        } else {
+            return blah(string, i+1)
+        }
+    }
+    var letter = blah(str, 0)
+    return letter
+}
