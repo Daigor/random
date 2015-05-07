@@ -1,15 +1,28 @@
 function stepOne(str){
     var alpha = "abcdefghijklmnopqrstuvwxyz"
-    
+    var newString = str.split("")
+    var array = []
     function blah(string, i){
         var currentAlphaIndex = alpha.indexOf(string[i])
         var nextAlphaIndex = alpha.indexOf(string[i+1])
-        if(nextAlphaIndex-currentAlphaIndex != 1){
-            return alpha[alpha.indexOf(string[0])-1]+alpha[currentAlphaIndex+1]    
+        var startAlpha = alpha.indexOf(string[0])
+       
+        if(string.length === 0){
+            return null      
+        } else if (nextAlphaIndex-currentAlphaIndex != 1 && currentAlphaIndex-nextAlphaIndex != 1){
+                if(startAlpha < currentAlphaIndex){
+                    array.push(alpha[startAlpha-1],alpha[currentAlphaIndex+1])
+                    string.splice(0,i+1)
+                    return blah(string, 0)
+                } else {
+                    array.push(alpha[startAlpha+1],alpha[currentAlphaIndex-1])
+                    string.splice(0,i+1)
+                    return blah(string, 0)
+                }
         } else {
             return blah(string, i+1)
         }
     }
-    var letter = blah(str, 0)
-    return letter
+    blah(newString, 0)
+    return array
 }
