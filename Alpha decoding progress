@@ -2,27 +2,29 @@ function stepOne(str){
     var alpha = "abcdefghijklmnopqrstuvwxyz"
     var newString = str.split("")
     var array = []
-    function blah(string, i){
-        var currentAlphaIndex = alpha.indexOf(string[i])
-        var nextAlphaIndex = alpha.indexOf(string[i+1])
+    function decode(string, i){
+        var currentAlpha = alpha.indexOf(string[i])
+        var nextAlpha = alpha.indexOf(string[i+1])
         var startAlpha = alpha.indexOf(string[0])
        
         if(string.length === 0){
             return null      
-        } else if (nextAlphaIndex-currentAlphaIndex != 1 && currentAlphaIndex-nextAlphaIndex != 1){
-                if(startAlpha < currentAlphaIndex){
-                    array.push(alpha[startAlpha-1],alpha[currentAlphaIndex+1])
+        } else if (nextAlpha-currentAlpha != 1 && currentAlpha-nextAlpha != 1){
+                if(startAlpha < currentAlpha){
+                    array.push(alpha[startAlpha-1],alpha[currentAlpha+1])
                     string.splice(0,i+1)
-                    return blah(string, 0)
+                    return decode(string, 0)
                 } else {
-                    array.push(alpha[startAlpha+1],alpha[currentAlphaIndex-1])
+                    array.push(alpha[startAlpha+1],alpha[currentAlpha-1])
                     string.splice(0,i+1)
-                    return blah(string, 0)
+                    return decode(string, 0)
                 }
         } else {
-            return blah(string, i+1)
+            return decode(string, i+1)
         }
     }
-    blah(newString, 0)
+    decode(newString, 0)
     return array
 }
+
+stepOne("cdefghijklmnnmlkjihgfedcb")
