@@ -2,20 +2,21 @@ function stepOne(str){
     var alpha = "abcdefghijklmnopqrstuvwxyz"
     var array = []
   	for(var i = 0 ; i < str.length-1;i++){
-    	 var firstLetter = alpha.indexOf(str[i])
-         var lastLetter = alpha.indexOf(str[i+1])
-         if (lastLetter > firstLetter){
-         for(var j = firstLetter+1; j < lastLetter; j++){
+    	 var currentLetter = alpha.indexOf(str[i])
+         var nextLetter = alpha.indexOf(str[i+1])
+         if (nextLetter > currentLetter){
+         for(var j = currentLetter+1; j < nextLetter; j++){
          	array.push(alpha[j])
           }
         } else {
-     	 for(var k = firstLetter-1; k > lastLetter; k--){
+     	 for(var k = currentLetter-1; k > nextLetter; k--){
          	array.push(alpha[k])
          }		
        }
     }
    return array.join("")
 }
+
 
 function AlphabetRunEncryption(str) { 
 	var alpha = "abcdefghijklmnopqrstuvwxyz"
