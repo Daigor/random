@@ -1,6 +1,6 @@
 function stepOne(str){
     var alpha = "abcdefghijklmnopqrstuvwxyz"
-    var array = []
+    var array = [alpha[alpha.indexOf(str[0])-1]]
     for(var i = 0 ; i < str.length;i++){
         var previousAlpha = alpha.indexOf(str[i-1])
         var currentAlpha = alpha.indexOf(str[i])   
@@ -14,6 +14,7 @@ function stepOne(str){
             
         }
     }
-    array.unshift(alpha[alpha.indexOf(str[0])-1])
     return array.join("")
 }
+
+stepOne("cdefghijklmnnmlkjihgfedcb")
